@@ -1,14 +1,15 @@
 import { Route, Routes } from "react-router";
 import { useAuthContext } from "./context/auth";
 import LoginPage from "./pages/Auth/LoginPage";
+import StaffSidebar from "./components/StaffSidebar";
+import StaffDashboardPage from "./pages/Staff/Dashboard";
 
 function renderSidebar(role: string) {
   switch (role) {
     case "customer":
       return null;
     case "staff":
-      return null;
-
+      return <StaffSidebar />;
     default:
       return null;
   }
@@ -28,6 +29,10 @@ function renderRoutes(role: string) {
     case "staff":
       return (
         <Routes>
+          <Route
+            path="/dashboard"
+            element={<StaffDashboardPage />}
+          />
           <Route
             path="*"
             element={null}
@@ -54,9 +59,11 @@ function renderRoutes(role: string) {
 function Main() {
   const authState = useAuthContext();
 
+  console.log("state", authState);
+
   return (
-    <div>
-      {authState ? renderSidebar(authState.role) : null}
+    <div className="flex">
+      {authState?.isAuthenticated ? renderSidebar(authState.role) : null}
       <div>{!authState?.isAuthenticated ? renderRoutes("none") : renderRoutes(authState.role)}</div>
     </div>
   );

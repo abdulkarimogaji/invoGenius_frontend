@@ -16,15 +16,15 @@ type ActionType = {
   };
 };
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   user_id: 0,
   token: "",
-  role: "",
-  isValidating: true,
+  role: "staff",
+  isValidating: false,
 };
 
-export const AuthContext = createContext<AuthContextType | null>(null);
-export const AuthDispatchContext = createContext<React.Dispatch<ActionType> | null>(null);
+export const AuthContext = createContext<AuthContextType>(initialState);
+export const AuthDispatchContext = createContext<React.Dispatch<ActionType>>(() => {});
 
 const reducer = (state: AuthContextType, action: ActionType) => {
   switch (action.type) {
