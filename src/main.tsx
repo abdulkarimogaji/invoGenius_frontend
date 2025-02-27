@@ -3,6 +3,7 @@ import { useAuthContext } from "./context/auth";
 import LoginPage from "./pages/Auth/LoginPage";
 import StaffSidebar from "./components/StaffSidebar";
 import StaffDashboardPage from "./pages/Staff/Dashboard";
+import StaffInvoicesPage from "./pages/Staff/Invoices";
 
 function renderSidebar(role: string) {
   switch (role) {
@@ -32,6 +33,10 @@ function renderRoutes(role: string) {
           <Route
             path="/dashboard"
             element={<StaffDashboardPage />}
+          />
+          <Route
+            path="/invoices"
+            element={<StaffInvoicesPage />}
           />
           <Route
             path="*"
@@ -64,7 +69,7 @@ function Main() {
   return (
     <div className="flex">
       {authState?.isAuthenticated ? renderSidebar(authState.role) : null}
-      <div>{!authState?.isAuthenticated ? renderRoutes("none") : renderRoutes(authState.role)}</div>
+      <div className="flex-grow">{!authState?.isAuthenticated ? renderRoutes("none") : renderRoutes(authState.role)}</div>
     </div>
   );
 }
