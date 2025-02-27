@@ -13,17 +13,17 @@ export default function LoginPage() {
               <Field className={"mt-6"}>
                 <Label className="text-sm font-medium text-gray-700">Name</Label>
                 <Input
-                  className={`mt-1.5 w-full rounded-lg border border-gray-300 p-2 px-4 py-2 font-normal ring-lime-600 duration-100 outline-none focus-within:border-transparent focus-within:ring-2 focus-within:outline-none`}
+                  className={`ring-primary-600 mt-1.5 w-full rounded-lg border border-gray-300 p-2 px-4 py-2 font-normal duration-100 outline-none focus-within:border-transparent focus-within:ring-2 focus-within:outline-none`}
                 />
               </Field>
               <Field className={"mt-6"}>
                 <Label className="text-sm font-medium text-gray-700">Password</Label>
                 <Input
-                  className={`mt-1.5 w-full rounded-lg border border-gray-300 p-2 px-4 py-2 font-normal ring-lime-600 duration-100 outline-none focus-within:border-transparent focus-within:ring-2 focus-within:outline-none`}
+                  className={`ring-primary-600 mt-1.5 w-full rounded-lg border border-gray-300 p-2 px-4 py-2 font-normal duration-100 outline-none focus-within:border-transparent focus-within:ring-2 focus-within:outline-none`}
                 />
                 <Link
                   to={"/forgot-password"}
-                  className="mt-1 text-sm font-semibold text-lime-600"
+                  className="text-primary-600 mt-1 text-sm font-semibold"
                 >
                   Forgot password
                 </Link>
@@ -31,7 +31,7 @@ export default function LoginPage() {
             </Fieldset>
             <Button
               type="submit"
-              className={"mt-6 w-full cursor-pointer rounded-lg bg-lime-600 py-2.5 font-semibold text-white"}
+              className={"bg-primary-600 mt-6 w-full cursor-pointer rounded-lg py-2.5 font-semibold text-white"}
             >
               Login
             </Button>

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { CoinsHandIcon, HomeLineIcon } from "../Icons";
+import { CoinsHandIcon, Dataflow04Icon, File03Icon, HomeLineIcon, Settings02Icon, Users01Icon } from "../Icons";
 import { useState } from "react";
 
 export default function StaffSidebar() {
@@ -19,39 +19,47 @@ export default function StaffSidebar() {
     {
       name: "Customers",
       link: "/customers",
-      icon: CoinsHandIcon,
+      icon: Users01Icon,
     },
     {
       name: "Reports",
       link: "/reports",
-      icon: CoinsHandIcon,
+      icon: File03Icon,
     },
     {
       name: "Integrations",
       link: "/integrations",
-      icon: CoinsHandIcon,
+      icon: Dataflow04Icon,
     },
     {
       name: "Settings",
       link: "/settings",
-      icon: CoinsHandIcon,
+      icon: Settings02Icon,
     },
   ];
 
   return (
-    <aside className={`h-screen border-r border-gray-200 bg-white p-4 ${open ? "w-[300px]" : ""}`}>
-      <div>Logo here</div>
-      <ul className="mt-2 space-y-1">
+    <aside className={`h-screen border-r border-gray-200 bg-white p-4 shadow-2xl ${open ? "w-[300px]" : ""}`}>
+      <div>
+        <img
+          src="/logos/Amdragz full v4@4x.png"
+          alt=""
+          className="h-10 w-full object-cover"
+        />
+      </div>
+      <ul className="mt-4 space-y-1">
         {sections.map((section) => (
           <li key={section.link}>
             <NavLink
               to={section.link}
-              className={({ isActive }) => `group flex items-center gap-3 px-3 py-2 ${isActive ? "bg-lime-50 text-lime-700" : "text-gray-700 hover:bg-lime-50 hover:text-lime-700"}`}
+              className={({ isActive }) =>
+                `group flex items-center gap-3 rounded-md px-3 py-2 ${isActive ? "bg-primary-50 text-primary-700" : "hover:bg-primary-50 hover:text-primary-700 text-gray-700"}`
+              }
             >
               {({ isActive }) => (
                 <>
                   <section.icon
-                    className={`h-6 w-6 ${isActive ? "text-lime-600" : "text-gray-500 group-hover:text-lime-600"}`}
+                    className={`h-6 w-6 ${isActive ? "text-primary-600" : "group-hover:text-primary-600 text-gray-500"}`}
                     strokeWidth={2}
                   />
                   <span className="text-base font-medium">{section.name}</span>

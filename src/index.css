@@ -1,7 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-50: #e6e8ff;
+  --color-primary-100: #ccd0ff;
+  --color-primary-200: #99a1ff;
+  --color-primary-300: #6672ff;
+  --color-primary-400: #3343ff;
+  --color-primary-500: #0009a5;
+  --color-primary-600: #00088f;
+  --color-primary-700: #000779;
+  --color-primary-800: #000663;
+  --color-primary-900: #00044d;
+  --color-secondary: #504e4c;
+}
+
 .login-image {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, lime 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, primary 100%);
   background-image: url("/login-bg.jpeg");
   background-position: center center;
   background-size: cover;
