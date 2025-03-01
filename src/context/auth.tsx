@@ -16,10 +16,10 @@ type ActionType = {
   };
 };
 const initialState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user_id: 0,
   token: "",
-  role: "staff",
+  role: "",
   isValidating: false,
 };
 
