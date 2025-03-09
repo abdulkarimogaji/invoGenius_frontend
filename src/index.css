@@ -12,6 +12,8 @@
   --color-primary-800: #000663;
   --color-primary-900: #00044d;
   --color-secondary: #504e4c;
+
+  --radius-circle: 50%;
 }
 
 .login-image {

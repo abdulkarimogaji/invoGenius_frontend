@@ -35,7 +35,6 @@ export default function LoginPage() {
       authDispatch({ type: "LOGIN", payload: { role: response.role, token: response.token, user_id: response.user_id } });
       navigate("/dashboard");
     } catch (err: any) {
-      console.log("err", err);
       setError("root", { message: err.message });
     }
   }

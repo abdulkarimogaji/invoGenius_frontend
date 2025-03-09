@@ -64,8 +64,6 @@ function renderRoutes(role: string) {
 function Main() {
   const authState = useAuthContext();
 
-  console.log("state", authState);
-
   return (
     <div className="flex">
       {authState?.isAuthenticated ? renderSidebar(authState.role) : null}

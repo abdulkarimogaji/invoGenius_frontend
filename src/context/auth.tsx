@@ -27,6 +27,7 @@ export const AuthContext = createContext<AuthContextType>(initialState);
 export const AuthDispatchContext = createContext<React.Dispatch<ActionType>>(() => {});
 
 const reducer = (state: AuthContextType, action: ActionType) => {
+  console.log("dispatching login");
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem("user_id", String(action.payload.user_id));
