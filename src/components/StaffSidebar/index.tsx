@@ -39,7 +39,7 @@ export default function StaffSidebar() {
   ];
 
   return (
-    <aside className={`h-screen border-r border-gray-200 bg-white p-4 shadow-2xl ${open ? "w-[300px]" : ""}`}>
+    <aside className={`h-screen border-r border-gray-200 bg-white p-4 shadow-2xl ${open ? "w-[300px] max-w-[300px] min-w-[300px]" : ""}`}>
       <div>
         <img
           src="/logos/Amdragz full v4@4x.png"

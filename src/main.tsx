@@ -4,6 +4,7 @@ import LoginPage from "./pages/Auth/LoginPage";
 import StaffSidebar from "./components/StaffSidebar";
 import StaffDashboardPage from "./pages/Staff/Dashboard";
 import StaffInvoicesPage from "./pages/Staff/Invoices";
+import StaffIntegrationsPage from "./pages/Staff/Integrations";
 
 function renderSidebar(role: string) {
   switch (role) {
@@ -37,6 +38,10 @@ function renderRoutes(role: string) {
           <Route
             path="/invoices"
             element={<StaffInvoicesPage />}
+          />
+          <Route
+            path="/integrations"
+            element={<StaffIntegrationsPage />}
           />
           <Route
             path="*"
