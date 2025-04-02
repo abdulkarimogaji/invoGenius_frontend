@@ -101,7 +101,7 @@ export default function StaffIntegrationsPage() {
         <hr className="mt-4 border-gray-200" />
         <div className="mt-10">
           <h4 className="text-base font-semibold text-gray-800">Available Integrations (9/12)</h4>
-          <div className="mt-4 grid grid-cols-3 gap-x-6 gap-y-4">
+          <div className="mt-4 grid gap-x-6 gap-y-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {integrations.map((i) => (
               <div
                 className="rounded-lg border border-gray-200 p-4"
