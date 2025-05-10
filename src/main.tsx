@@ -5,6 +5,7 @@ import StaffSidebar from "./components/StaffSidebar";
 import StaffDashboardPage from "./pages/Staff/Dashboard";
 import StaffInvoicesPage from "./pages/Staff/Invoices";
 import StaffIntegrationsPage from "./pages/Staff/Integrations";
+import StaffCustomersPage from "./pages/Staff/Customers";
 
 function renderSidebar(role: string) {
   switch (role) {
@@ -34,6 +35,10 @@ function renderRoutes(role: string) {
           <Route
             path="/dashboard"
             element={<StaffDashboardPage />}
+          />
+          <Route
+            path="/customers"
+            element={<StaffCustomersPage />}
           />
           <Route
             path="/invoices"

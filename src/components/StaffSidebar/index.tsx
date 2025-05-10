@@ -16,15 +16,16 @@ export default function StaffSidebar() {
       icon: HomeLineIcon,
     },
     {
-      name: "Invoices",
-      link: "/invoices",
-      icon: CoinsHandIcon,
-    },
-    {
       name: "Customers",
       link: "/customers",
       icon: Users01Icon,
     },
+    {
+      name: "Invoices",
+      link: "/invoices",
+      icon: CoinsHandIcon,
+    },
+
     {
       name: "Reports",
       link: "/reports",

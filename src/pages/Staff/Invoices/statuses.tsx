@@ -1,5 +1,5 @@
-import { ClockIcon, CoinsStacked02Icon, CoinsSwap02Icon, Contrast01Icon, ReceiptCheckIcon, SlashCircle1Icon, XCircleIcon } from "../../../components/Icons";
-import { INVOICE_STATUSES } from "../../../utils/mappings";
+import { CheckCircleIcon, ClockIcon, CoinsStacked02Icon, CoinsSwap02Icon, Contrast01Icon, ReceiptCheckIcon, SlashCircle1Icon, XCircleIcon } from "@/components/Icons";
+import { INVOICE_STATUSES } from "@/utils/mappings";
 
 export const STATUSES = {
   [INVOICE_STATUSES.PENDING]: (
@@ -18,6 +18,12 @@ export const STATUSES = {
     <div className="flex items-center gap-1 rounded-2xl bg-orange-50 px-1.5 py-0.5 text-xs font-medium text-orange-700">
       <XCircleIcon className="h-5 w-5 text-orange-600" />
       Unpaid
+    </div>
+  ),
+  [INVOICE_STATUSES.PAID]: (
+    <div className="flex items-center gap-1 rounded-2xl bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700">
+      <CheckCircleIcon className="h-5 w-5 text-green-600" />
+      Paid
     </div>
   ),
   [INVOICE_STATUSES.CREDIT_NOTE]: (

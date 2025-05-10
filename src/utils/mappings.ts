@@ -9,3 +9,10 @@ export const INVOICE_STATUSES = {
   REFUNDED: "refunded",
   CREDIT_NOTE: "credit_note",
 };
+
+export const CUSTOMER_STATUSES = {
+  ACTIVE: "active",
+  INACTIVE: "inactive",
+};
+
+export type UserStatusType = "staff" | "customer";
