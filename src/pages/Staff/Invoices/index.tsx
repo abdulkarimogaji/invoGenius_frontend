@@ -75,7 +75,13 @@ export default function StaffInvoicesPage() {
                         <div>
                           <div className="flex flex-col">
                             <span className="text-sm font-medium">Tuition September 2022</span>
-                            <span className="text-primary-500 text-xs font-medium">#2312312</span>
+                            <a
+                              className="text-primary-500 text-xs font-medium"
+                              target="_blank"
+                              href="/invoices/2312312"
+                            >
+                              #2312312
+                            </a>
                           </div>
                         </div>
                       </div>

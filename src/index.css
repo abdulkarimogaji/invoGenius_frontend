@@ -23,6 +23,31 @@
   background-size: cover;
 }
 
+.custom-shadow {
+  box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.24);
+}
+
+.small-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+.small-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.small-scroll::-webkit-scrollbar-thumb {
+  background: #eaecf0;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.small-scroll::-webkit-scrollbar-thumb:hover {
+  background: #d0d5dd;
+}
+
 body {
   font-family: "Hind Siliguri", serif;
 }
