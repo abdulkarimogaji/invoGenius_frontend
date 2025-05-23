@@ -8,7 +8,9 @@ export const INVOICE_STATUSES = {
   CANCELLED: "cancelled",
   REFUNDED: "refunded",
   CREDIT_NOTE: "credit_note",
-};
+} as const;
+
+export type InvoiceStatusType = (typeof INVOICE_STATUSES)[keyof typeof INVOICE_STATUSES];
 
 export const CUSTOMER_STATUSES = {
   ACTIVE: "active",

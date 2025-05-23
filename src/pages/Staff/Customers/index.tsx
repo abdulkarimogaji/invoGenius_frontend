@@ -1,10 +1,26 @@
-import { PlusCircleIcon, Share05Icon } from "@/components/Icons";
+import { Share05Icon } from "@/components/Icons";
 import { STATUSES } from "./statuses";
 import useCustomers from "./useCustomers";
 import moment from "moment";
+import FilterButton from "@/components/FilterButton";
+import { useSearchParams } from "react-router";
 
 export default function StaffCustomersPage() {
-  const { customers, defaultCurrency } = useCustomers();
+  const [searchParams] = useSearchParams();
+
+  const filters = {
+    customer_id: searchParams.get("customer_id"),
+    first_name: searchParams.get("first_name"),
+    last_name: searchParams.get("last_name"),
+    email: searchParams.get("email"),
+    phone: searchParams.get("phone"),
+  };
+  const pagination = {
+    page: searchParams.get("page"),
+    size: searchParams.get("size"),
+  };
+
+  const { customers, defaultCurrency } = useCustomers(filters, pagination);
 
   return (
     <div className="bg-primary-50 h-screen p-6">
@@ -14,41 +30,31 @@ export default function StaffCustomersPage() {
         </header>
         <div className="flex items-center justify-between px-5 py-4">
           <div className="flex items-center gap-2">
-            <div
-              className="flex cursor-pointer items-center gap-1 rounded-3xl border border-gray-200 px-1 py-0.5 text-xs font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              role="button"
-            >
-              <PlusCircleIcon className="h-3 w-3" />
-              Customer ID
-            </div>{" "}
-            <div
-              className="flex cursor-pointer items-center gap-1 rounded-3xl border border-gray-200 px-1 py-0.5 text-xs font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              role="button"
-            >
-              <PlusCircleIcon className="h-3 w-3" />
-              First Name
-            </div>
-            <div
-              className="flex cursor-pointer items-center gap-1 rounded-3xl border border-gray-200 px-1 py-0.5 text-xs font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              role="button"
-            >
-              <PlusCircleIcon className="h-3 w-3" />
-              Last Name
-            </div>
-            <div
-              className="flex cursor-pointer items-center gap-1 rounded-3xl border border-gray-200 px-1 py-0.5 text-xs font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              role="button"
-            >
-              <PlusCircleIcon className="h-3 w-3" />
-              Email
-            </div>
-            <div
-              className="flex cursor-pointer items-center gap-1 rounded-3xl border border-gray-200 px-1 py-0.5 text-xs font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50"
-              role="button"
-            >
-              <PlusCircleIcon className="h-3 w-3" />
-              Phone
-            </div>
+            <FilterButton
+              label="Customer ID"
+              name="customer_id"
+              type="text"
+            />
+            <FilterButton
+              label="First name"
+              name="first_name"
+              type="text"
+            />
+            <FilterButton
+              label="Last name"
+              name="last_name"
+              type="text"
+            />
+            <FilterButton
+              label="Email"
+              name="email"
+              type="text"
+            />
+            <FilterButton
+              label="Phone"
+              name="phone"
+              type="text"
+            />
           </div>
           <button className="flex cursor-pointer items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-gray-50">
             <Share05Icon className="h-4 w-4" /> Export

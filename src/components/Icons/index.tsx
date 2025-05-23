@@ -5,6 +5,7 @@ import CalendarDateIcon from "./CalendarDateIcon";
 import CalendarIcon from "./CalendarIcon";
 import CoinsHandIcon from "./CoinsHandIcon";
 import CheckCircleIcon from "./CheckCircleIcon";
+import ChevronDownIcon from "./ChevronDownIcon";
 import ChevronRightIcon from "./ChevronRightIcon";
 import ClockIcon from "./ClockIcon";
 import ClockRewindIcon from "./ClockRewindIcon";
@@ -48,6 +49,7 @@ export {
   CalendarDateIcon,
   CalendarIcon,
   CheckCircleIcon,
+  ChevronDownIcon,
   ChevronRightIcon,
   ClockIcon,
   ClockRewindIcon,

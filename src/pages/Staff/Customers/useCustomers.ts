@@ -23,16 +23,28 @@ type ResponseType = {
   default_currency: string;
 };
 
-async function fetchCustomers({ queryKey }: { queryKey: string[] }) {
-  // TODO: use filters from the query key
-  console.log("log", queryKey);
+type Filters = {
+  customer_id: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  email: string | null;
+  phone: string | null;
+};
+
+type Pagination = {
+  page: string | null;
+  size: string | null;
+};
+
+async function fetchCustomers({ queryKey }: { queryKey: any }) {
+  const filtersStr = new URLSearchParams(queryKey[1]).toString();
   const sdk = new InvoSDK();
-  const response: ResponseType = await sdk.callRawAPI(`/v1/api/customers`, "GET", undefined);
+  const response: ResponseType = await sdk.callRawAPI(`/v1/api/customers?${filtersStr}`, "GET", undefined);
   return response;
 }
 
-export default function useCustomers() {
-  const result = useQuery({ queryKey: ["customers"], queryFn: fetchCustomers, throwOnError: true });
+export default function useCustomers(filters: Filters, pagination: Pagination) {
+  const result = useQuery({ queryKey: ["customers", filters, pagination], queryFn: fetchCustomers, throwOnError: true });
 
   return { customers: result.data?.customers ?? [], defaultCurrency: result.data?.default_currency };
 }
