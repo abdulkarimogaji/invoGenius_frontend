@@ -24,16 +24,16 @@ type ResponseType = {
 };
 
 type Filters = {
-  customer_id: string | null;
-  first_name: string | null;
-  last_name: string | null;
-  email: string | null;
-  phone: string | null;
+  customer_id?: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  phone?: string;
 };
 
 type Pagination = {
-  page: string | null;
-  size: string | null;
+  page?: string;
+  size?: string;
 };
 
 async function fetchCustomers({ queryKey }: { queryKey: any }) {

@@ -30,9 +30,11 @@ import Mail02Icon from "./Mail02Icon";
 import MessageChatSquareIcon from "./MessageChatSquareIcon";
 import PhoneCall01Icon from "./PhoneCall01Icon";
 import PlusCircleIcon from "./PlusCircleIcon";
+import PlusIcon from "./PlusIcon";
 import ReceiptCheckIcon from "./ReceiptCheckIcon";
 import RefreshCCW04Icon from "./RefreshCCW04Icon";
 import SearchLgIcon from "./SearchLgIcon";
+import SearchMdIcon from "./SearchMdIcon";
 import Settings02Icon from "./Settings02Icon";
 import Share05Icon from "./Share05Icon";
 import SlashCircle1Icon from "./SlashCircle01Icon";
@@ -41,6 +43,7 @@ import User01Icon from "./User01Icon";
 import Users01Icon from "./Users01Icon";
 import VideoRecorderIcon from "./VideoRecorderIcon";
 import XCircleIcon from "./XCircleIcon";
+import XCloseIcon from "./XCloseIcon";
 
 export {
   AtSymbolIcon,
@@ -75,9 +78,11 @@ export {
   MessageChatSquareIcon,
   PhoneCall01Icon,
   PlusCircleIcon,
+  PlusIcon,
   ReceiptCheckIcon,
   RefreshCCW04Icon,
   SearchLgIcon,
+  SearchMdIcon,
   Share05Icon,
   Settings02Icon,
   SlashCircle1Icon,
@@ -86,4 +91,5 @@ export {
   Users01Icon,
   VideoRecorderIcon,
   XCircleIcon,
+  XCloseIcon,
 };

@@ -9,15 +9,15 @@ export default function StaffCustomersPage() {
   const [searchParams] = useSearchParams();
 
   const filters = {
-    customer_id: searchParams.get("customer_id"),
-    first_name: searchParams.get("first_name"),
-    last_name: searchParams.get("last_name"),
-    email: searchParams.get("email"),
-    phone: searchParams.get("phone"),
+    customer_id: searchParams.get("customer_id") || undefined,
+    first_name: searchParams.get("first_name") || undefined,
+    last_name: searchParams.get("last_name") || undefined,
+    email: searchParams.get("email") || undefined,
+    phone: searchParams.get("phone") || undefined,
   };
   const pagination = {
-    page: searchParams.get("page"),
-    size: searchParams.get("size"),
+    page: searchParams.get("page") || undefined,
+    size: searchParams.get("size") || undefined,
   };
 
   const { customers, defaultCurrency } = useCustomers(filters, pagination);
