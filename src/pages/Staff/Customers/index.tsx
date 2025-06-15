@@ -1,9 +1,11 @@
-import { Share05Icon } from "@/components/Icons";
+import { Share05Icon, UserPlus01Icon } from "@/components/Icons";
 import { STATUSES } from "./statuses";
 import useCustomers from "./useCustomers";
 import moment from "moment";
 import FilterButton from "@/components/FilterButton";
 import { useSearchParams } from "react-router";
+import { useState } from "react";
+import CreateCustomerModal from "./CreateCustomerModal";
 
 export default function StaffCustomersPage() {
   const [searchParams] = useSearchParams();
@@ -21,6 +23,8 @@ export default function StaffCustomersPage() {
   };
 
   const { customers, defaultCurrency } = useCustomers(filters, pagination);
+
+  const [createCustomer, setCreateCustomer] = useState(false);
 
   return (
     <div className="bg-primary-50 h-screen p-6">
@@ -56,9 +60,17 @@ export default function StaffCustomersPage() {
               type="text"
             />
           </div>
-          <button className="flex cursor-pointer items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-gray-50">
-            <Share05Icon className="h-4 w-4" /> Export
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              className="bg-primary-600 flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white duration-200 hover:opacity-90 active:opacity-95"
+              onClick={() => setCreateCustomer(true)}
+            >
+              <UserPlus01Icon className="h-5 w-5" /> Create Customer
+            </button>
+            <button className="flex cursor-pointer items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-gray-50">
+              <Share05Icon className="h-4 w-4" /> Export
+            </button>
+          </div>
         </div>
         <div>
           <div className="grid grid-cols-[minmax(200px,2fr)_minmax(300px,3fr)_minmax(200px,2fr)_minmax(150px,1.5fr)_minmax(150px,1.5fr)_minmax(152px,1fr)] items-center border-y border-gray-200">
@@ -133,6 +145,10 @@ export default function StaffCustomersPage() {
           </div>
         </div>
       </div>
+      <CreateCustomerModal
+        isOpen={createCustomer}
+        closeModal={() => setCreateCustomer(false)}
+      />
     </div>
   );
 }

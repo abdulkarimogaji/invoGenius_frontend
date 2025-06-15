@@ -40,6 +40,7 @@ import Share05Icon from "./Share05Icon";
 import SlashCircle1Icon from "./SlashCircle01Icon";
 import Trash02Icon from "./Trash02Icon";
 import User01Icon from "./User01Icon";
+import UserPlus01Icon from "./UserPlus01Icon";
 import Users01Icon from "./Users01Icon";
 import VideoRecorderIcon from "./VideoRecorderIcon";
 import XCircleIcon from "./XCircleIcon";
@@ -88,6 +89,7 @@ export {
   SlashCircle1Icon,
   Trash02Icon,
   User01Icon,
+  UserPlus01Icon,
   Users01Icon,
   VideoRecorderIcon,
   XCircleIcon,
