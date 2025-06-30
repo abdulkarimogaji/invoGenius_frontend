@@ -9,6 +9,7 @@ import * as yup from "yup";
 import useCustomers from "../Customers/useCustomers";
 import useInvoiceSettings from "./useInvoiceSettings";
 import moment from "moment";
+import { useQueryClient } from "@tanstack/react-query";
 
 const invoiceTypes = [
   {
@@ -39,6 +40,8 @@ const invoiceTypes = [
 
 export default function CreateInvoiceModal({ isOpen, closeModal }: { isOpen: boolean; closeModal: () => void }) {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   const { customers } = useCustomers({}, {});
   const { settings } = useInvoiceSettings();
 
@@ -92,6 +95,7 @@ export default function CreateInvoiceModal({ isOpen, closeModal }: { isOpen: boo
         type: data.type === "Other" ? data.other_type : data.type,
         deadline: data.deadline || null,
       });
+      queryClient.invalidateQueries({ queryKey: ["invoices"] });
       navigate(`/invoices/${response.invoice_id}`);
     } catch (err: any) {
       // throw err;

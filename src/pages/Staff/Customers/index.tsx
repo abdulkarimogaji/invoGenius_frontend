@@ -1,4 +1,4 @@
-import { Share05Icon, UserPlus01Icon } from "@/components/Icons";
+import { ArrowNarrowDownIcon, Share05Icon, UserPlus01Icon } from "@/components/Icons";
 import { STATUSES } from "./statuses";
 import useCustomers from "./useCustomers";
 import moment from "moment";
@@ -7,8 +7,43 @@ import { useSearchParams } from "react-router";
 import { useState } from "react";
 import CreateCustomerModal from "./CreateCustomerModal";
 
+const columns = [
+  {
+    header: "Created Date",
+    canSort: true,
+    sortId: "created_at",
+  },
+  {
+    header: "Details",
+    canSort: true,
+    sortId: "first_name",
+  },
+  {
+    header: "Number of Invoices",
+    canSort: false,
+    sortId: "",
+  },
+  {
+    header: "Total billed",
+    canSort: false,
+    sortId: "",
+  },
+  {
+    header: "Total Collected",
+    canSort: false,
+    sortId: "",
+  },
+  {
+    header: "Status",
+    canSort: true,
+    sortId: "status",
+  },
+];
+
 export default function StaffCustomersPage() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get("sort_by");
+  const sortOrder = searchParams.get("sort_order");
 
   const filters = {
     customer_id: searchParams.get("customer_id") || undefined,
@@ -20,6 +55,8 @@ export default function StaffCustomersPage() {
   const pagination = {
     page: searchParams.get("page") || undefined,
     size: searchParams.get("size") || undefined,
+    sort_by: sortBy || undefined,
+    sort_order: sortOrder || undefined,
   };
 
   const { customers, defaultCurrency } = useCustomers(filters, pagination);
@@ -27,7 +64,7 @@ export default function StaffCustomersPage() {
   const [createCustomer, setCreateCustomer] = useState(false);
 
   return (
-    <div className="bg-primary-50 h-screen p-6">
+    <div className="bg-primary-25 h-screen p-6">
       <div className="rounded-lg border border-gray-200 bg-white">
         <header className="flex items-center justify-between">
           <h2 className="rounded-t-lg px-5 py-3 text-lg font-semibold text-gray-900">Customers</h2>
@@ -74,12 +111,29 @@ export default function StaffCustomersPage() {
         </div>
         <div>
           <div className="grid grid-cols-[minmax(200px,2fr)_minmax(300px,3fr)_minmax(200px,2fr)_minmax(150px,1.5fr)_minmax(150px,1.5fr)_minmax(152px,1fr)] items-center border-y border-gray-200">
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Created Date</div>
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Details</div>
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Number of Invoices</div>
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Total Billed</div>
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Total Collected</div>
-            <div className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}>Status</div>
+            {columns.map((column) => (
+              <div
+                key={column.header}
+                className={`flex cursor-pointer items-center gap-1 py-3 pl-6 text-left text-xs font-medium tracking-wider text-gray-600`}
+              >
+                <button
+                  disabled={!column.canSort}
+                  className={`flex items-center gap-2 ${column.canSort ? "cursor-pointer" : "cursor-default"}`}
+                  onClick={() => {
+                    searchParams.set("sort_by", column.sortId);
+                    searchParams.set("sort_order", sortOrder === "asc" ? "desc" : "asc");
+                    setSearchParams(searchParams);
+                  }}
+                >
+                  {column.canSort ? (
+                    <ArrowNarrowDownIcon
+                      className={`h-3.5 w-3.5 ${sortBy === column.sortId ? "text-gray-600" : "text-gray-400"} ${sortBy === column.sortId && sortOrder === "desc" ? "rotate-180" : ""}`}
+                    />
+                  ) : null}
+                  {column.header}
+                </button>
+              </div>
+            ))}
           </div>
           <div className="bg-white text-sm font-medium text-gray-700">
             {customers.map((customer) => {
@@ -92,7 +146,7 @@ export default function StaffCustomersPage() {
                     <div className={`relative flex h-full pl-6 whitespace-nowrap`}>
                       <div className="flex h-18 items-center gap-x-2">
                         <div className="">
-                          <span className={`block text-sm`}>15 days ago</span>
+                          <span className={`block text-sm`}>{moment(customer.created_at).fromNow()}</span>
 
                           {true ? <span className={`mt-1 text-xs font-normal`}>{moment(customer.created_at).format("DD[th] MMMM [at] hh:mma")}</span> : null}
                         </div>

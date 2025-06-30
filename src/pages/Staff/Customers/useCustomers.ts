@@ -1,5 +1,6 @@
 import InvoSDK from "@/utils/InvoSDK";
 import { UserStatusType } from "@/utils/mappings";
+import { createFilterString } from "@/utils/utils";
 import { useQuery } from "@tanstack/react-query";
 
 type Customer = {
@@ -37,7 +38,7 @@ type Pagination = {
 };
 
 async function fetchCustomers({ queryKey }: { queryKey: any }) {
-  const filtersStr = new URLSearchParams(queryKey[1]).toString();
+  const filtersStr = createFilterString(queryKey[1]);
   const sdk = new InvoSDK();
   const response: ResponseType = await sdk.callRawAPI(`/v1/api/customers?${filtersStr}`, "GET", undefined);
   return response;

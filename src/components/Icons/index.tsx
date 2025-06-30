@@ -1,3 +1,5 @@
+import ArrowNarrowDownIcon from "./ArrowNarrowDownIcon";
+import ArrowNarrowUpIcon from "./ArrowNarrowUpIcon";
 import AtSymbolIcon from "./AtSymbolIcon";
 import BankNote01Icon from "./BankNote01Icon";
 import Bell02Icon from "./Bell02Icon";
@@ -47,6 +49,8 @@ import XCircleIcon from "./XCircleIcon";
 import XCloseIcon from "./XCloseIcon";
 
 export {
+  ArrowNarrowDownIcon,
+  ArrowNarrowUpIcon,
   AtSymbolIcon,
   BankNote01Icon,
   Bell02Icon,
